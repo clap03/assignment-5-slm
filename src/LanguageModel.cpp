@@ -9,6 +9,11 @@ LanguageModel::LanguageModel(int k) : k(k) {
 void LanguageModel::train(const string& text) {
     frequencies.clear();
     transitions.clear();
+    alphabet.clear();
+
+    for(char c : text) {
+        alphabet.insert(c);
+    }
 
     for(size_t i = 0; i + k <= text.size(); ++i) {
         string gram = text.substr(i , k);
@@ -38,4 +43,15 @@ void LanguageModel::printTransitions() const {
 
     }
   }
+}
+
+void LanguageModel::printAlphabet() const {
+
+    cout << "Alphabet: ";
+
+    for(char c : alphabet) {
+        cout << c << " ";
+    }
+
+    cout << '\n';
 }

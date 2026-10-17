@@ -25,6 +25,7 @@ int main() {
     model.train(text);
     model.printFrequencies();
     model.printTransitions();
+    model.printAlphabet();
 
     cout << "Training completed\n";
 
