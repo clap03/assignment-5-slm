@@ -11,8 +11,17 @@
 using namespace std;
 
 int parseInt(const string& value) {
-    size_t pos = 0;
+    if(value.empty()) {
+        throw invalid_argument("Invalid integer: " + value);
+    }
 
+    for(char c : value) {
+        if (c < '0' || c > '9') {
+            throw invalid_argument("Invalid integer: " + value);
+        }
+    }
+    
+    size_t pos = 0;
     int number = stoi(value, &pos);
 
     if (pos != value.size()) {
