@@ -18,6 +18,10 @@ public:
     void printFrequencies() const;
     void printTransitions() const;
     void printAlphabet() const;
+    std::map<char, double> getWeights(
+        const std::string& gram,
+        double alpha
+    ) const;
 };
 
 

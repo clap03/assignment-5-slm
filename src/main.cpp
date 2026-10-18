@@ -2,6 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <map>
 
 #include "LanguageModel.h"
 
@@ -23,6 +24,12 @@ int main() {
     LanguageModel model(2);
 
     model.train(text);
+    map<char, double> weights = model.getWeights("ba", 1.0);
+
+    cout << "Weights for ba:\n";
+    for(const auto& entry : weights) {
+        cout << entry.first << " : " << entry.second << '\n';
+    }
     model.printFrequencies();
     model.printTransitions();
     model.printAlphabet();

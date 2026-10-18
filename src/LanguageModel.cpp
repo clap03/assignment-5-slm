@@ -55,3 +55,22 @@ void LanguageModel::printAlphabet() const {
 
     cout << '\n';
 }
+
+map<char, double> LanguageModel::getWeights(
+    const string& gram,
+    double alpha
+) const {
+    map<char, double> weights;
+    for(char c : alphabet) {
+        int count = 0;
+        auto it = transitions.find(gram);
+        if(it != transitions.end()) {
+            auto next = it->second.find(c);
+        if(next != it->second.end()) {
+            count = next->second;
+        }    
+        }
+        weights[c] = count + alpha;
+    }
+    return weights;
+}
