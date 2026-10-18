@@ -2,7 +2,7 @@ Small Language Model (SLM)
 
 Description
 
-This project implements a simple character-based language model in C++17.
+This project implements a simple character-based language model in C++.
 
 The program reads a training text, counts overlapping k-grams and their character transitions, and generates random text using the observed frequencies.
 
