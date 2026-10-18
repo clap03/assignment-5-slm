@@ -5,6 +5,7 @@
 #include <map>
 
 #include "LanguageModel.h"
+#include "TextGenerator.h"
 
 using namespace std;
 
@@ -30,6 +31,17 @@ int main() {
     for(const auto& entry : weights) {
         cout << entry.first << " : " << entry.second << '\n';
     }
+
+    TextGenerator textGenerator(model);
+
+    cout << "Generated characters:";
+
+    for(int i = 0; i < 10; ++i) {
+        cout << textGenerator.generateNext("ba", 1.0);
+    }
+
+    cout << '\n';
+
     model.printFrequencies();
     model.printTransitions();
     model.printAlphabet();
