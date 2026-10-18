@@ -3,11 +3,40 @@
 #include <sstream>
 #include <string>
 #include <stdexcept>
+#include <cmath>
 
 #include "LanguageModel.h"
 #include "TextGenerator.h"
 
 using namespace std;
+
+int parseInt(const string& value) {
+    size_t pos = 0;
+
+    int number = stoi(value, &pos);
+
+    if (pos != value.size()) {
+        throw invalid_argument("Invalid integer: " + value);
+    }
+
+    return number;
+}
+
+double parseDouble(const string& value) {
+    size_t pos = 0;
+
+    double number = stod(value, &pos);
+
+    if(pos != value.size()) {
+        throw invalid_argument("Invalid alpha: " + value);
+    }
+
+    if(!isfinite(number)) {
+        throw invalid_argument("Alpha must be finite");
+    }
+
+    return number;
+}
 
 int main(int argc, char* argv[]) {
 
@@ -18,16 +47,16 @@ int main(int argc, char* argv[]) {
         string filename;
 
         if(argc == 4) {
-            k = stoi(argv[1]);
+            k = parseInt(argv[1]);
             filename = argv[2];
-            length = stoi(argv[3]);
+            length = parseInt(argv[3]);
         }
 
         else if(argc == 6 && string(argv[1]) == "-a") {
-            alpha = stod(argv[2]);
-            k = stoi(argv[3]);
+            alpha = parseDouble(argv[2]);
+            k = parseInt(argv[3]);
             filename = argv[4];
-            length = stoi(argv[5]);
+            length = parseInt(argv[5]);
         }
 
         else {
