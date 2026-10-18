@@ -34,13 +34,13 @@ int main() {
 
     TextGenerator textGenerator(model);
 
-    cout << "Generated characters:";
+    string start = textGenerator.generateStart();
 
-    for(int i = 0; i < 10; ++i) {
-        cout << textGenerator.generateNext("ba", 1.0);
-    }
+    cout << "Starting k-gram: " << start << '\n';
 
-    cout << '\n';
+    cout << "Generated text: "
+         << textGenerator.generate(start, 10, 1.0)
+         << '\n';
 
     model.printFrequencies();
     model.printTransitions();

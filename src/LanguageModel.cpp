@@ -74,3 +74,7 @@ map<char, double> LanguageModel::getWeights(
     }
     return weights;
 }
+
+const map<string, int>& LanguageModel::getFrequencies() const {
+    return frequencies;
+}

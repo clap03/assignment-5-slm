@@ -22,6 +22,7 @@ public:
         const std::string& gram,
         double alpha
     ) const;
+    const std::map<std::string, int>& getFrequencies() const;
 };
 
 

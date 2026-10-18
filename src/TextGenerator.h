@@ -14,7 +14,16 @@ class TextGenerator {
 
     char generateNext(const std::string& gram, double alpha);
 
+    std::string generate(
+    const std::string& start,
+    int length,
+    double alpha
+    );
+
+    std::string generateStart();
+
 };
+
 
 
 
